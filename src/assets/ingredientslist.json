@@ -1,0 +1,31 @@
+{
+  "meats": [
+    "pepperoni",
+    "mild sausage",
+    "hot sausage",
+    "ground beef",
+    "bacon",
+    "canadian bacon",
+    "anchovies"
+  ],
+  "cheeses": [
+    "cheddar",
+    "swiss",
+    "mozzarella",
+    "provolone",
+    "feta"
+  ],
+  "veggies": [
+    "onions",
+    "bell peppers",
+    "mushrooms",
+    "spinach",
+    "olives"
+  ],
+  "sauces": [
+    "red sauce",
+    "white sauce",
+    "barbecue sauce",
+    "hot sauce"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "figaro": [
+    "pepperoni",
+    "anchovies",
+    "bacon"
+  ],
+  "Romano": [
+    "mild sausage",
+    "hot sausage",
+    "ground beef",
+    "canadian bacon"
+  ],
+  "Siciliano": [
+    "provolone",
+    "onions"
+  ],
+  "Margherita": [
+    "mozzarella",
+    "olives"
+  ]
+}
