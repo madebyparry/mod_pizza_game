@@ -1,31 +1,67 @@
 {
-  "meats": [
-    "pepperoni",
-    "mild sausage",
-    "hot sausage",
-    "ground beef",
-    "bacon",
-    "canadian bacon",
-    "anchovies"
-  ],
+ "sauces": [
+    "creamy alfredo",
+    "garlic pesto",
+    "garlic rub",
+    "olive oil",
+    "spicy tomato sauce",
+    "sweet BBQ",
+    "tomato sauce",
+    "no sauce"
+ ],
   "cheeses": [
+    "asiago",
     "cheddar",
-    "swiss",
+    "feta",
+    "gorgenzola",
     "mozzarella",
-    "provolone",
-    "feta"
+    "parmesan",
+    "plant-based",
+    "ricotta",
+    "no cheese"
+  ],
+  "meats": [
+    "anchovies",
+    "canadian bacon",
+    "crispy bacon",
+    "grilled chicken",
+    "ground beef",
+    "mild italian sausage",
+    "pepperoni",
+    "plant-based italian sausage",
+    "salamai",
+    "spicy chicken sausage"
   ],
   "veggies": [
-    "onions",
-    "bell peppers",
+    "artichokes",
+    "arugula",
+    "basil",
+    "black olives",
+    "corn",
+    "garlic-chopped",
+    "garlic-roasted",
+    "green bell peppers",
+    "mama lil's sweet hot peppas",
     "mushrooms",
+    "oregano",
+    "pickled jalapenos",
+    "pineapple",
+    "red onion",
+    "red peppers-roasted",
+    "rosemary",
+    "salt and pepper",
     "spinach",
-    "olives"
+    "tomatoes-diced",
+    "tomatoes-sliced"
   ],
-  "sauces": [
-    "red sauce",
-    "white sauce",
-    "barbecue sauce",
-    "hot sauce"
+  "finishing sauces": [
+    "balsamic fig glaze",
+    "garlic pesto",
+    "hot buffalo",
+    "mike's hot honey",
+    "ranch",
+    "sriracha ranch",
+    "sweet BBQ",
+    "tomato sauce dollops"
   ]
 }
