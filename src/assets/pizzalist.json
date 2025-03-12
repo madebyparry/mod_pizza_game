@@ -1,21 +1,67 @@
 {
-  "figaro": [
-    "pepperoni",
-    "anchovies",
-    "bacon"
+  "the maddy": [
+    "tomato sauce",
+    "mozzarella"
   ],
-  "Romano": [
-    "mild sausage",
-    "hot sausage",
-    "ground beef",
-    "canadian bacon"
-  ],
-  "Siciliano": [
-    "provolone",
-    "onions"
-  ],
-  "Margherita": [
+  "mad dog": [
+    "tomato sauce",
     "mozzarella",
-    "olives"
+    "pepperoni",
+    "mild italian sausage",
+    "ground beef",
+  ],
+  "Caspian": [
+    "sweet BBQ",
+    "mozzarella",
+    "gorgenzola",
+    "grilled chicken",
+    "red onions-sliced",
+    "sweet BBQ"
+  ],
+  "dillon james": [
+    "tomato sauce",
+    "garlic-chopped",
+    "basil",
+    "mozzarella",
+    "asiago",
+    "tomatoes-sliced"
+  ],
+  "Jasper": [
+    "tomato sauce",
+    "mozzarella",
+    "spicy chicken sausage",
+    "mushrooms"
+  ],
+  "Calexico": [
+    "tomato sauce",
+    "mozzarella",
+    "gorgenzola",
+    "grilled chicken",
+    "pickled jalapenos",
+    "hot buffalo"
+  ],
+  "Tristan": [
+    "no sauce",
+    "mozzarella",
+    "asiago",
+    "mushrooms",
+    "red peppers-roasted",
+    "garlic pesto"
+  ],
+  "Dominic": [
+    "creamy alfredo",
+    "basil",
+    "asiago",
+    "mild italian sausage",
+    "red onions-sliced",
+    "tomatoes-sliced"
+  ],
+  "Lucy Sunshine": [
+    "garlic rub",
+    "mozzarella",
+    "parmesan",
+    "artichokes",
+    "tomato sauce dollops"
   ]
 }
+
