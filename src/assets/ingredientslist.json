@@ -6,8 +6,7 @@
     "olive oil",
     "spicy tomato sauce",
     "sweet BBQ",
-    "tomato sauce",
-    "no sauce"
+    "tomato sauce"
  ],
   "cheeses": [
     "asiago",
@@ -17,8 +16,7 @@
     "mozzarella",
     "parmesan",
     "plant-based",
-    "ricotta",
-    "no cheese"
+    "ricotta"
   ],
   "meats": [
     "anchovies",
@@ -37,7 +35,11 @@
     "arugula",
     "basil",
     "black olives",
+    "broccoli",
+    "chickpeas",
     "corn",
+    "croutons",
+    "cucumbers",
     "garlic-chopped",
     "garlic-roasted",
     "green bell peppers",
@@ -63,5 +65,21 @@
     "sriracha ranch",
     "sweet BBQ",
     "tomato sauce dollops"
+  ],
+  "greens": [
+    "arugula",
+    "mixed spring greens",
+    "romaine",
+    "spinach"
+  ],
+  "dressings": [
+    "balsamic vinaigrette",
+    "caesar",
+    "greek vinaigrette",
+    "oil and vinegar",
+    "olive oil",
+    "ranch",
+    "sherry dijon vinaigrette",
+    "zesty tomato vinaigrette"
   ]
 }
