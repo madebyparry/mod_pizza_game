@@ -1,14 +1,39 @@
 {
-"italian chop": [
-  "romaine",
-  "arugula",
-  "mozzarella",
-  "parmesan",
-  "salami",
-  "red onions",
-  "black olives",
-  "chickpeas",
-  "green bell peppers",
-  "zesty tomato vinaigrette"
+  "italian chop": [
+    "romaine",
+    "arugula",
+    "mozzarella",
+    "parmesan",
+    "salami",
+    "red onions",
+    "black olives",
+    "chickpeas",
+    "green bell peppers",
+    "zesty tomato vinaigrette"
+],
+  "garden": [
+    "romaine",
+    "mixed spring greens",
+    "tomatoes-diced",
+    "cucmbers",
+    "sherry dijon vinaigrette"
+],
+  "caesar": [
+    "romaine",
+    "asiago",
+    "parmesan",
+    "croutons",
+    "caesar"
+],
+  "greek": [
+    "romaine",
+    "feta",
+    "red onions",
+    "black olives",
+    "mama lil's sweet hot peppers",
+    "tomatoes-diced",
+    "cucumbers",
+    "chickpeas",
+    "greek vinaigrette"
 ]
 }
