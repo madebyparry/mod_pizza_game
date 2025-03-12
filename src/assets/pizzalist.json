@@ -1,9 +1,9 @@
 {
-  "the maddy": [
+  "Maddy": [
     "tomato sauce",
     "mozzarella"
   ],
-  "mad dog": [
+  "Mad Dog": [
     "tomato sauce",
     "mozzarella",
     "pepperoni",
@@ -18,7 +18,7 @@
     "red onions-sliced",
     "sweet BBQ"
   ],
-  "dillon james": [
+  "Dillon James": [
     "tomato sauce",
     "garlic-chopped",
     "basil",
@@ -62,6 +62,15 @@
     "parmesan",
     "artichokes",
     "tomato sauce dollops"
+  ],
+  "Mike's Favorite Pizza": [
+    "tomato sauce",
+    "mozzarella",
+    "parmesan",
+    "ricotta",
+    "spicy chicken sausage",
+    "pickled jalapenos",
+    "mike's hot honey"
   ]
 }
 
