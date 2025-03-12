@@ -18,6 +18,7 @@ function App() {
   }
   const [shuffledPizzas, setShuffledPizzas] = useState(shuffle(pizzaList));
   const [pizzaProgress, setPizzaProgress] = useState(0);
+  const [pizzaScore, setPizzaScore] = useState(0);
   const [currentPizza, setCurrentPizza] = useState(
     shuffledPizzas[pizzaProgress],
   );
@@ -52,6 +53,7 @@ function App() {
     console.log("submit");
     if (isEqual(currentIngredients, pizzaJson[currentPizza])) {
       setLastResult("match");
+      setPizzaScore(pizzaScore + 1);
       console.log("match");
     } else {
       setLastResult("no match");
@@ -65,35 +67,53 @@ function App() {
   return (
     <>
       {lastResult ? (
-        <div className={`last-pizza ${lastResult.replace(" ", "-")}`}>
-          <p>Last Pizza: {shuffledPizzas[pizzaProgress - 1]}</p>
-          <p>{lastResult}</p>
-        </div>
+        <>
+          <div className={`last-pizza ${lastResult.replace(" ", "-")}`}>
+            <p>{lastResult}</p>
+            <p>
+              score: {pizzaScore}/{pizzaList.length}
+            </p>
+          </div>
+          <div className={`last-pizza ${lastResult.replace(" ", "-")}`}>
+            <h4>Last Pizza: {shuffledPizzas[pizzaProgress - 1]}</h4>
+            <ul>
+              {pizzaJson[shuffledPizzas[pizzaProgress - 1]].map(
+                (ingredient) => {
+                  return <li>{ingredient}</li>;
+                },
+              )}
+            </ul>
+          </div>
+        </>
       ) : (
-        <h1>MOD</h1>
+        <img src="/mod_pizza_game/public/MOD_Pizza_logo.svg.png" />
+        //<h1>MOD</h1>
       )}
       <hr />
-      <h2>{currentPizza}</h2>
-      <div className="current-ingredients">
-        <ul className="current-ingredients-list">
-          {currentIngredients.map((ingredient) => {
-            return <li>{ingredient}</li>;
-          })}
-        </ul>
-        <button
-          onClick={() => {
-            submitHandler();
-          }}
-        >
-          SUBMIT
-        </button>
-      </div>
-      <hr />
-      <div className="ingredients-wrapper">
-        {ingredientsCategories.map((item) => {
-          return (
-            <div className="ingredients-column">
-              {ingredientsJson[item].map((ingredient) => {
+      {pizzaProgress < pizzaList.length ? (
+        <>
+          <h2>{currentPizza}</h2>
+          <h3>
+            {pizzaProgress + 1} / {pizzaList.length}
+          </h3>
+          <div className="current-ingredients">
+            <ul className="current-ingredients-list">
+              {currentIngredients.map((ingredient) => {
+                return <li>{ingredient}</li>;
+              })}
+            </ul>
+            <button
+              onClick={() => {
+                submitHandler();
+              }}
+            >
+              SUBMIT
+            </button>
+          </div>
+          <hr />
+          <div className="ingredients-wrapper">
+            {ingredientsCategories.map((item) => {
+              return ingredientsJson[item].map((ingredient) => {
                 return (
                   <button
                     value={ingredient}
@@ -107,11 +127,23 @@ function App() {
                     {ingredient}
                   </button>
                 );
-              })}
-            </div>
-          );
-        })}
-      </div>
+              });
+            })}
+          </div>
+        </>
+      ) : (
+        <>
+          <div>
+            <h2>Game Over</h2>
+          </div>
+          <div>
+            <h3>Final Score:</h3>
+            <h4>
+              {pizzaScore}/{pizzaList.length}
+            </h4>
+          </div>
+        </>
+      )}
     </>
   );
 }

@@ -4,6 +4,7 @@
 h1 {
   font-size: 2rem;
   margin: 0px;
+  margin-bottom: 10px;
 }
 hr {
   border-color: rgba(250, 250, 250, 0.1);
@@ -33,8 +34,13 @@ hr {
     flex-direction: column;
     gap: 5px;
   }
-  button.active {
-    border-color: red;
+  button {
+    flex: 1;
+    max-width: 50%;
+    min-width: 30%;
+    &.active {
+      border-color: red;
+    }
   }
 }
 .current-ingredients {
@@ -55,5 +61,8 @@ hr {
       background-color: rgba(0, 0, 0, 0.1);
       border-radius: 5px;
     }
+  }
+  button {
+    width: 100%;
   }
 }
