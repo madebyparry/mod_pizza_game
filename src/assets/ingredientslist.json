@@ -1,5 +1,5 @@
 {
- "sauces": [
+  "sauces": [
     "creamy alfredo",
     "garlic pesto",
     "garlic rub",
@@ -7,7 +7,7 @@
     "spicy tomato sauce",
     "sweet BBQ",
     "tomato sauce"
- ],
+  ],
   "cheeses": [
     "asiago",
     "cheddar",
@@ -61,17 +61,12 @@
     "garlic pesto",
     "hot buffalo",
     "mike's hot honey",
-    "ranch",
+    "ranch finish",
     "sriracha ranch",
-    "sweet BBQ",
+    "sweet BBQ finish",
     "tomato sauce dollops"
   ],
-  "greens": [
-    "arugula",
-    "mixed spring greens",
-    "romaine",
-    "spinach"
-  ],
+  "greens": ["arugula", "mixed spring greens", "romaine", "spinach"],
   "dressings": [
     "balsamic vinaigrette",
     "caesar",

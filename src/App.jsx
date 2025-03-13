@@ -29,11 +29,13 @@ function App() {
     shuffledPizzas[pizzaProgress],
   );
   const [lastResult, setLastResult] = useState(null);
+  const [modalOpen, setModalOpen] = useState(false);
 
   useEffect(() => {
     setCurrentPizza(shuffledPizzas[pizzaProgress]);
   }, [pizzaProgress, shuffledPizzas]);
 
+  // Handler definitions for selecting ingredients and submitting lists
   function ingredientHandler(ingredient) {
     if (currentIngredients.includes(ingredient)) {
       const cI = currentIngredients.filter((item) => item !== ingredient);
@@ -44,6 +46,7 @@ function App() {
       console.log("added", ingredient);
     }
   }
+
   function submitHandler() {
     function isEqual(a, b) {
       console.log(
@@ -74,7 +77,18 @@ function App() {
     setCurrentIngredients([]);
     let p = pizzaProgress + 1;
     setPizzaProgress(p);
+    handleModalOpen();
   }
+
+  function handleModalOpen() {
+    if (modalOpen) {
+      setModalOpen(false);
+    } else {
+      setModalOpen(true);
+    }
+  }
+
+  // Component parts to refactor out:
   function StatusBar() {
     return (
       <div className={`status-bar ${lastResult.replace(" ", "-")}`}>
@@ -82,12 +96,11 @@ function App() {
           {lastResult == "match" ? "✔" : "❌"}
           {lastResult}
         </p>
-        <p>
-          score: {pizzaScore}/{pizzaList.length}
-        </p>
+        <p>score: {pizzaScore}</p>
       </div>
     );
   }
+
   function CurrentIngredientsList() {
     return (
       <div className="current-ingredients">
@@ -103,12 +116,14 @@ function App() {
       </div>
     );
   }
+
   function LastPizza() {
     return (
       <div className={`last-pizza ${lastResult.replace(" ", "-")}`}>
-        <h4>
-          Last Pizza: <span>{shuffledPizzas[pizzaProgress - 1]}</span>
-        </h4>
+        <p>
+          {lastResult == "match" ? "✔" : "❌"}
+          {lastResult}
+        </p>
         <ul>
           {combineJson[shuffledPizzas[pizzaProgress - 1]].map((ingredient) => {
             return <li>{ingredient}</li>;
@@ -120,12 +135,6 @@ function App() {
   function CurrentPrompt() {
     return (
       <div className="current-prompt-wrapper">
-        <div className="pizza-title">
-          <h2>{currentPizza}</h2>
-          <h3>
-            {pizzaProgress + 1} / {pizzaList.length}
-          </h3>
-        </div>
         <button
           className="submit-button"
           onClick={() => {
@@ -145,7 +154,8 @@ function App() {
           return ingredientsJson[item].map((ingredient) => {
             return (
               <button
-                value={ingredient}
+                key={"ingredient-" + item + "-" + ingredient}
+                value={item + "-" + ingredient}
                 onClick={() => {
                   ingredientHandler(ingredient);
                 }}
@@ -162,6 +172,57 @@ function App() {
         })}
       </div>
     );
+  }
+  function TopBar() {
+    return (
+      <div className="sticky-bar">
+        <div className="pizza-title">
+          <div className="pizza-name">
+            {
+              //<img
+              //  className="mod-logo-header"
+              //  src="/mod_pizza_game/public/MOD_Pizza_logo.svg.png"
+              ///>
+            }
+            <h1>{currentPizza}</h1>
+          </div>
+          <h3>
+            {pizzaProgress + 1} / {pizzaList.length}
+          </h3>
+        </div>
+        <CurrentIngredientsList />
+        <div className="submit-button-wrapper">
+          <button
+            className="submit-button"
+            onClick={() => {
+              submitHandler();
+            }}
+          >
+            SUBMIT
+          </button>
+        </div>
+        {lastResult ? <StatusBar /> : ""}
+      </div>
+    );
+  }
+
+  function ModalElement({ title, children }) {
+    console.log("title", title);
+    if (modalOpen) {
+      return (
+        <div className="modal-wrapper" onClick={() => handleModalOpen()}>
+          <div className="modal-body">
+            <div className="modal-header">
+              <h2>{title}</h2>
+              <span className="close" onClick={() => handleModalOpen()}>
+                X
+              </span>
+            </div>
+            <div className="modal-inner">{children}</div>
+          </div>
+        </div>
+      );
+    }
   }
 
   function GameOver() {
@@ -182,13 +243,12 @@ function App() {
 
   return (
     <>
-      <div className="sticky-bar">
-        {lastResult ? <StatusBar /> : ""}
-        <CurrentIngredientsList />
-      </div>
+      <TopBar />
       {lastResult ? (
         <>
-          <LastPizza />
+          <ModalElement title={shuffledPizzas[pizzaProgress - 1]}>
+            <LastPizza />
+          </ModalElement>
         </>
       ) : (
         <img
@@ -198,7 +258,6 @@ function App() {
       )}
       {pizzaProgress < pizzaList.length ? (
         <>
-          <CurrentPrompt />
           <hr />
           <IngredientSelect />
         </>

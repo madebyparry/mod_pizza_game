@@ -1,8 +1,5 @@
 {
-  "Maddy": [
-    "tomato sauce",
-    "mozzarella"
-  ],
+  "Maddy": ["tomato sauce", "mozzarella"],
   "Mad Dog": [
     "tomato sauce",
     "mozzarella",
@@ -16,7 +13,7 @@
     "gorgenzola",
     "grilled chicken",
     "red onions",
-    "sweet BBQ"
+    "sweet BBQ finish"
   ],
   "Dillon James": [
     "tomato sauce",
@@ -72,4 +69,3 @@
     "mike's hot honey"
   ]
 }
-
