@@ -1,13 +1,13 @@
-$color-success: #203535;
-$color-fail: #3a2020;
+$color-success: #147373;
+$color-fail: #801212;
 
 $color-sauces: rgba(220, 0, 0, 0.5);
 $color-cheeses: rgba(254, 190, 0, 0.5);
 $color-meats: rgba(50, 50, 50, 0.5);
 $color-veggies: rgba(0, 220, 0, 0.5);
 $color-finishingsauces: rgba(126, 20, 232, 0.5);
-$color-greens: rgba(0, 255, 0, 0.5);
-$color-dressings: rgba(156, 30, 232, 0.5);
+$color-greens: rgba(35, 255, 173, 0.5);
+$color-dressings: rgba(255, 35, 241, 0.5);
 
 #root {
   padding: 10px;
@@ -23,6 +23,7 @@ hr {
 .sticky-bar {
   position: sticky;
   top: 0px;
+  border-bottom: 1px solid #1a1a1a;
 }
 .pizza-name {
   display: flex;
@@ -32,6 +33,12 @@ hr {
     display: block;
     max-width: 50px;
   }
+}
+.reference-button {
+  width: 100%;
+  border-color: #ffffffde;
+  background: transparent;
+  color: #ffffffde;
 }
 .mod-logo {
   display: block;
@@ -69,10 +76,10 @@ hr {
     }
   }
   &.match {
-    background-color: rgba(0, 200, 200, 0.1);
+    background-color: $color-success;
   }
   &.no-match {
-    background-color: rgba(255, 0, 0, 0.1);
+    background-color: $color-fail;
   }
   > * {
     margin: 0px;
@@ -213,6 +220,38 @@ hr {
     }
     .close {
       font-weight: bold;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+  .modal-inner {
+    &.scroll {
+      overflow-y: scroll;
+      max-height: 80vh;
+      text-align: left;
+      p {
+        font-weight: bold;
+        font-size: 1.5rem;
+        border-bottom: 1px solid rgba(200, 200, 200, 0.3);
+      }
+      ul {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin: 0px;
+        list-style-type: none;
+        min-height: 30px;
+        background-color: #353535;
+        padding: 10px;
+        border-radius: 5px;
+        li {
+          padding: 5px 10px;
+          background-color: rgba(0, 0, 0, 0.2);
+          border-radius: 5px;
+          border: 2px solid transparent;
+        }
+      }
     }
   }
 }

@@ -7,13 +7,10 @@ import "./App.css";
 
 function App() {
   const [currentIngredients, setCurrentIngredients] = useState([]);
-  let pizzas = Object.keys(pizzaJson);
-  let salads = Object.keys(saladJson);
-  let pizzaList = pizzas.concat(salads);
   let ingredientsCategories = Object.keys(ingredientsJson);
   let combineJson = Object.assign(pizzaJson, saladJson);
+  let pizzaList = Object.keys(combineJson);
   console.log("combineJson", combineJson);
-  console.log("saladJson", saladJson);
 
   function shuffle(array) {
     for (let i = array.length - 1; i > 0; i--) {
@@ -21,6 +18,9 @@ function App() {
       [array[i], array[j]] = [array[j], array[i]];
     }
     return array;
+  }
+  function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
   }
   const [shuffledPizzas, setShuffledPizzas] = useState(shuffle(pizzaList));
   const [pizzaProgress, setPizzaProgress] = useState(0);
@@ -30,6 +30,7 @@ function App() {
   );
   const [lastResult, setLastResult] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
+  const [refModalOpen, setRefModalOpen] = useState(false);
 
   useEffect(() => {
     setCurrentPizza(shuffledPizzas[pizzaProgress]);
@@ -49,12 +50,6 @@ function App() {
 
   function submitHandler() {
     function isEqual(a, b) {
-      console.log(
-        "😎",
-        a.length === b.length &&
-          a.every((element) => b.includes(element)) &&
-          b.every((element) => a.includes(element)),
-      );
       return (
         a.length === b.length &&
         a.every((element) => b.includes(element)) &&
@@ -64,15 +59,14 @@ function App() {
     console.log("submit");
     if (isEqual(currentIngredients, combineJson[currentPizza])) {
       setLastResult("match");
-      setPizzaScore(pizzaScore + 1);
+      setPizzaScore(pizzaScore + currentIngredients.length * 10);
       console.log("match");
-      //} else if (isEqual(currentIngredients, saladJson[currentPizza])) {
-      //  setLastResult("match");
-      //  setPizzaScore(pizzaScore + 1);
-      //  console.log("match");
     } else {
       setLastResult("no match");
       console.log("no match");
+      if (pizzaScore > 50) {
+        setPizzaScore(pizzaScore - 50);
+      }
     }
     setCurrentIngredients([]);
     let p = pizzaProgress + 1;
@@ -85,6 +79,13 @@ function App() {
       setModalOpen(false);
     } else {
       setModalOpen(true);
+    }
+  }
+  function handleRefModal() {
+    if (refModalOpen) {
+      setRefModalOpen(false);
+    } else {
+      setRefModalOpen(true);
     }
   }
 
@@ -165,7 +166,7 @@ function App() {
                   (currentIngredients.includes(ingredient) ? "active" : "")
                 }
               >
-                {ingredient}
+                {capitalizeFirstLetter(ingredient)}
               </button>
             );
           });
@@ -184,7 +185,7 @@ function App() {
               //  src="/mod_pizza_game/public/MOD_Pizza_logo.svg.png"
               ///>
             }
-            <h1>{currentPizza}</h1>
+            <h1>{capitalizeFirstLetter(currentPizza)}</h1>
           </div>
           <h3>
             {pizzaProgress + 1} / {pizzaList.length}
@@ -205,9 +206,40 @@ function App() {
       </div>
     );
   }
+  // Reference Modal
+  function ReferenceModal() {
+    if (refModalOpen) {
+      return (
+        <div className="modal-wrapper" onClick={() => handleRefModal()}>
+          <div className="modal-body">
+            <div className="modal-header">
+              <h2>Reference</h2>
+              <span className="close" onClick={() => handleRefModal()}>
+                X
+              </span>
+            </div>
+            <div className="modal-inner scroll">
+              <h1>All Orders:</h1>
+              {Object.keys(combineJson).map((p) => {
+                return (
+                  <>
+                    <p>{p}</p>
+                    <ul>
+                      {combineJson[p].map((i) => {
+                        return <li>{i}</li>;
+                      })}
+                    </ul>
+                  </>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      );
+    }
+  }
 
   function ModalElement({ title, children }) {
-    console.log("title", title);
     if (modalOpen) {
       return (
         <div className="modal-wrapper" onClick={() => handleModalOpen()}>
@@ -229,35 +261,45 @@ function App() {
     return (
       <>
         <div>
+          <img
+            className="mod-logo"
+            src="/mod_pizza_game/public/MOD_Pizza_logo.svg.png"
+          />
           <h2>Game Over</h2>
         </div>
         <div>
           <h3>Final Score:</h3>
-          <h4>
-            {pizzaScore}/{pizzaList.length}
-          </h4>
+          <h4>{pizzaScore}</h4>
         </div>
       </>
     );
   }
-
   return (
     <>
-      <TopBar />
-      {lastResult ? (
-        <>
-          <ModalElement title={shuffledPizzas[pizzaProgress - 1]}>
-            <LastPizza />
-          </ModalElement>
-        </>
-      ) : (
-        <img
-          className="mod-logo"
-          src="/mod_pizza_game/public/MOD_Pizza_logo.svg.png"
-        />
-      )}
       {pizzaProgress < pizzaList.length ? (
         <>
+          <TopBar />
+          {lastResult ? (
+            <>
+              <ModalElement title={shuffledPizzas[pizzaProgress - 1]}>
+                <LastPizza />
+              </ModalElement>
+            </>
+          ) : (
+            <>
+              <img
+                className="mod-logo"
+                src="/mod_pizza_game/public/MOD_Pizza_logo.svg.png"
+              />
+              <button
+                className="reference-button"
+                onClick={() => handleRefModal()}
+              >
+                REFERENCE INGREDIENTS
+              </button>
+              <ReferenceModal />
+            </>
+          )}
           <hr />
           <IngredientSelect />
         </>
