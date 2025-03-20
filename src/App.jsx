@@ -36,6 +36,16 @@ function App() {
     setCurrentPizza(shuffledPizzas[pizzaProgress]);
   }, [pizzaProgress, shuffledPizzas]);
 
+  useEffect(() => {
+    window.addEventListener("beforeunload", alertUser);
+    return () => {
+      window.removeEventListener("beforeunload", alertUser);
+    };
+  }, []);
+  const alertUser = (e) => {
+    e.preventDefault();
+    e.returnValue = "";
+  };
   // Handler definitions for selecting ingredients and submitting lists
   function ingredientHandler(ingredient) {
     if (currentIngredients.includes(ingredient)) {
